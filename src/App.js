@@ -82,6 +82,8 @@ class App extends Component {
 
           <Counter />
 
+          <hr/>
+
           <button 
           onClick={this.toggleCarsHandler}
           >Toggle Cars</button>
