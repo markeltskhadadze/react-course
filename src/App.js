@@ -12,12 +12,13 @@ class App extends Component {
 
     this.state ={
       cars: [
-        {name: 'Ford', year: 2018},
-        // {name: 'Audi', year: 2016},
-        // {name: 'Mazda', year: 2010}
+        {name: 'Ford', year: '2018'},
+        {name: 'Audi', year: 2016},
+        {name: 'Mazda', year: 2010}
       ],
       pageTitle: 'React components',
-      showCars: false
+      showCars: false,
+      clicked: false
     }
   }
 
@@ -44,14 +45,6 @@ class App extends Component {
     this.setState({ cars })
   }
 
-  componentWillMount() {
-    console.log('App componentWillMount')
-  }
-
-  componentDidMount() {
-    console.log('App componentDidMount')
-  }
-
   render () {
     console.log('App render')
     const divStyle = {
@@ -67,6 +60,7 @@ class App extends Component {
         <Car
           name={car.name}
           year={car.year}
+          index={index}
           onDelete={this.deleteHandler.bind(this, index)}
           onChangeName={event => this.onChangeName(event.target.value, index)}
         />
@@ -89,6 +83,8 @@ class App extends Component {
           >Toggle Cars</button>
 
           { cars }
+
+          <button onClick={() => this.setState({clicked: true})}>Change Clicked</button>
       </div>
     );
   }
